@@ -16,8 +16,8 @@ from typing import Optional
 
 SWAP_FAVORABILITY = {
     # Ordered most to least favorable
-    "01": ["WAS", "MEM", "PHX"],
-    "O2": ["SAS", "DAL", "MIN"]
+    1: ["WAS", "MEM", "PHX"],
+    2: ["SAS", "DAL", "MIN"]
 }
 
 
@@ -71,10 +71,22 @@ def CLE_2030_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
 
 def DAL_2030_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
-    Dallas has not traded their 2030 pick. They keep it regardless of position.
+    Dalls has traded swap rights to their 2030 pick.
+        -   DAL <-> SAS: this was the Grant Williams trade.
+        -   SAS owns the most favorable, then DAL, then MIN with the least favorable
+            -   MIN only participates if it's 2-30
     """
-    pick = draft_order["DAL"]
-    return ("DAL", pick)
+    protection = range(1, 2) # # Protected 1-1, unprotected 2-30
+    min_pick_owner = evaluate_protection(draft_order, protection, "MIN", "SAS")
+    participating_teams = SWAP_FAVORABILITY[2]
+
+    if min_pick_owner == "MIN":
+        # MIN retains its pick
+        participating_teams.remove("MIN")
+
+    # Otherwise, MIN remains in the swap
+    ownership = evaluate_swap(draft_order, participating_teams, "DAL")
+    return ownership
 
 
 def DEN_2030_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
@@ -140,7 +152,7 @@ def MEM_2030_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
         - MEM owns the middle favorable, after WAS but before PHX
     """
     current_team = "MEM"
-    participating_teams = SWAP_FAVORABILITY["01"]
+    participating_teams = SWAP_FAVORABILITY[1]
     ownership = evaluate_swap(participating_teams, current_team)
     return ownership
 
@@ -163,13 +175,23 @@ def MIL_2030_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
 
 def MIN_2030_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
-    Minnesota traded their 2030 pick. Current owner is Sacramento.
-        - Pick is unprotected.
-        - MIN -> SAS: this was the Rob Dillingham trade
-        - SAS -> SAC: this was the De'Aaron Fox trade
+    Minnesota has traded swap rights to their 2030 pick.
+        -   MIN <-> SAS: this was the Rob Dillingham trade.
+        -   SAS owns the most favorable, then DAL, then MIN with the least favorable
+            -   MIN only participates if it's 2-30
     """
-    pick = draft_order["MIN"]
-    return ("SAC", pick)
+    protection = range(1, 2) # # Protected 1-1, unprotected 2-30
+    min_pick_owner = evaluate_protection(draft_order, protection, "MIN", "SAS")
+    participating_teams = SWAP_FAVORABILITY[2]
+
+    if min_pick_owner == "MIN":
+        # MIN retains its pick
+        pick = draft_order["MIN"]
+        return ("MIN", pick)
+
+    # Otherwise, MIN remains in the swap
+    ownership = evaluate_swap(draft_order, participating_teams, "MIN")
+    return ownership
 
 
 def NOP_2030_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
@@ -221,7 +243,7 @@ def PHX_2030_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
         - PHX owns the least favorable, then MEM, then PHX with most favorable
     """
     current_team = "PHX"
-    participating_teams = SWAP_FAVORABILITY["01"]
+    participating_teams = SWAP_FAVORABILITY[1]
     ownership = evaluate_swap(participating_teams, current_team)
     return ownership
 
@@ -241,7 +263,7 @@ def SAC_2030_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
         -   SAC owns the most favorable swap rights with SAS.
     """
     current_team = "SAC"
-    participating_teams = SWAP_FAVORABILITY["01"]
+    participating_teams = SWAP_FAVORABILITY[1]
     ownership = evaluate_swap(participating_teams, current_team)
     return ownership
 
@@ -254,16 +276,16 @@ def SAS_2030_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
         -   SAS owns the most favorable, then DAL, then MIN with the least favorable
             -   MIN only participates if it's 2-30
     """
-    min_pick = draft_order["MIN"]
     protection = range(1, 2) # # Protected 1-1, unprotected 2-30
-    min_pick_owner = evaluate_protection(min_pick, protection, "MIN", "SAS")
+    min_pick_owner = evaluate_protection(draft_order, protection, "MIN", "SAS")
+    participating_teams = SWAP_FAVORABILITY[2]
 
     if min_pick_owner == "MIN":
         # MIN retains its pick
-        participating_teams = SWAP_FAVORABILITY["02"].remove("MIN")
+        participating_teams.remove("MIN")
 
     # Otherwise, MIN remains in the swap
-    ownership = evaluate_swap(participating_teams, "SAS")
+    ownership = evaluate_swap(draft_order, participating_teams, "SAS")
     return ownership
 
 
@@ -291,7 +313,7 @@ def WAS_2030_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
         - WAS owns most favorable, then MEM, then PHX with least favorable
     """
     current_team = "WAS"
-    participating_teams = SWAP_FAVORABILITY["01"]
+    participating_teams = SWAP_FAVORABILITY[1]
     ownership = evaluate_swap(participating_teams, current_team)
     return ownership
 
