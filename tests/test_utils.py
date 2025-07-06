@@ -3,6 +3,11 @@ from years.utils import (
   , evaluate_protection
   , evaluate_swap
 )
+import pytest
+import importlib
+import pkgutil
+import re
+from years import __path__ as years_path
 
 test_draft_order = {
     'DET': 1

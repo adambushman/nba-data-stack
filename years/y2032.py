@@ -5,7 +5,7 @@ Additionally, there exist constants for swap favorability.
 """
 
 
-from years.utils  import (
+from years.utils import (
   prep_teams_and_picks
   , evaluate_protection
   , evaluate_swap
@@ -26,49 +26,56 @@ def ATL_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     """
     Atlanta has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "ATL"
+    pick = draft_order["ATL"]
+    return ("ATL", pick)
 
 
 def BOS_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
     Boston has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "BOS"
+    pick = draft_order["BOS"]
+    return ("BOS", pick)
 
 
 def BRK_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
     Brooklyn has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "BRK"
+    pick = draft_order["BRK"]
+    return ("BRK", pick)
 
 
 def CHA_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
     Carlotte has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "CHA"
+    pick = draft_order["CHA"]
+    return ("CHA", pick)
 
 
 def CHI_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
     Chicago has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "CHI"
+    pick = draft_order["CHI"]
+    return ("CHI", pick)
 
 
 def CLE_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
     Cleveland has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "CLE"
+    pick = draft_order["CLE"]
+    return ("CLE", pick)
 
 
 def DAL_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
     Dallas has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "DAL"
+    pick = draft_order["DAL"]
+    return ("DAL", pick)
 
 
 def DEN_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
@@ -77,161 +84,184 @@ def DEN_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
       - This was the "Cam Johnson/Michael Porter Jr." trade.
       - This pick is owned by Brooklyn regardless of position.
     """
-    return "BRK"
+    pick = draft_order["DEN"]
+    return ("BRK", pick)
 
 
 def DET_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
     Detroit has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "DET"
+    pick = draft_order["DET"]
+    return ("DET", pick)
 
 
 def GSW_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
     Golden State has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "GSW"
+    pick = draft_order["GSW"]
+    return ("GSW", pick)
 
 
 def HOU_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
     Houston has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "HOU"
+    pick = draft_order["HOU"]
+    return ("HOU", pick)
 
 
 def IND_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
     Indiana has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "IND"
+    pick = draft_order["IND"]
+    return ("IND", pick)
 
 
 def LAC_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
     LA Clippers has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "LAC"
+    pick = draft_order["LAC"]
+    return ("LAC", pick)
 
 
 def LAL_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
     LA Lakers has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "LAL"
+    pick = draft_order["LAL"]
+    return ("LAL", pick)
 
 
 def MEM_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
     Memphis has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "MEM"
+    pick = draft_order["MEM"]
+    return ("MEM", pick)
 
 
 def MIA_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
     Miami has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "MIA"
+    pick = draft_order["MIA"]
+    return ("MIA", pick)
 
 
 def MIL_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
     Milwaukee has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "MIL"
+    pick = draft_order["MIL"]
+    return ("MIL", pick)
 
 
 def MIN_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
     Minnesota has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "MIN"
+    pick = draft_order["MIN"]
+    return ("MIN", pick)
 
 
 def NOP_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
     New Orleans has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "NOP"
+    pick = draft_order["NOP"]
+    return ("NOP", pick)
 
 
 def NYK_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
     New York has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "NYK"
+    pick = draft_order["NYK"]
+    return ("NYK", pick)
 
 
 def OKC_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
     Oklahoma City has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "OKC"
+    pick = draft_order["OKC"]
+    return ("OKC", pick)
 
 
 def ORL_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
     Orlando has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "ORL"
+    pick = draft_order["ORL"]
+    return ("ORL", pick)
 
 
 def PHI_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
     Philadelphia has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "PHI"
+    pick = draft_order["PHI"]
+    return ("PHI", pick)
 
 
 def PHX_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
     Phoenix has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "PHX"
+    pick = draft_order["PHX"]
+    return ("PHX", pick)
 
 
 def POR_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
     Portland has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "POR"
+    pick = draft_order["POR"]
+    return ("POR", pick)
 
 
 def SAC_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
     Sacramento has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "SAC"
+    pick = draft_order["SAC"]
+    return ("SAC", pick)
 
 
 def SAS_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
     San Antonio has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "SAS"
+    pick = draft_order["SAS"]
+    return ("SAS", pick)
 
 
 def TOR_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
     Toronto has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "TOR"
+    pick = draft_order["TOR"]
+    return ("TOR", pick)
 
 
 def UTA_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
     Utah has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "UTA"
+    pick = draft_order["UTA"]
+    return ("UTA", pick)
 
 
 def WAS_2032_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
     Washington has not traded their 2032 pick. They keep it regardless of position.
     """
-    return "WAS"
+    pick = draft_order["WAS"]
+    return ("WAS", pick)
 
 
 
