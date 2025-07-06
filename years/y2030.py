@@ -17,7 +17,8 @@ from typing import Optional
 SWAP_FAVORABILITY = {
     # Ordered most to least favorable
     1: ["WAS", "MEM", "PHX"],
-    2: ["SAS", "DAL", "MIN"]
+    2: ["SAS", "DAL", "MIN"],
+    3: ["POR", "MIL"]
 }
 
 
@@ -167,10 +168,14 @@ def MIA_2030_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
 
 def MIL_2030_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
-    Milwaukee has not traded their 2030 pick. They keep it regardless of position.
+    Milwaukee has not traded their 2031 pick. They will participate in swap rights with Portland.
+        - MIL <-> POR: this was the Damian Lillard trade.
+        - MIL owns the least favorable, with POR owning the least favorable
     """
-    pick = draft_order["MIL"]
-    return ("MIL", pick)
+    current_team = "MIL"
+    participating_teams = SWAP_FAVORABILITY[3]
+    ownership = evaluate_swap(participating_teams, current_team)
+    return ownership
 
 
 def MIN_2030_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
@@ -242,30 +247,30 @@ def PHX_2030_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
         - PHX <-> WAS: this was the Bradley Beal trade
         - PHX owns the least favorable, then MEM, then PHX with most favorable
     """
-    current_team = "PHX"
-    participating_teams = SWAP_FAVORABILITY[1]
+    current_team = "MIL"
+    participating_teams = SWAP_FAVORABILITY[3]
     ownership = evaluate_swap(participating_teams, current_team)
     return ownership
 
 
 def POR_2030_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
-    Portland has not traded their 2030 pick. They keep it regardless of position.
+    Portland has not traded their 2031 pick. They will participate in swap rights with Milwaukee.
+        - POR <-> MIL: this was the Damian Lillard trade.
+        - POR owns the most favorable, with MIL owning the least favorable
     """
-    pick = draft_order["POR"]
-    return ("POR", pick)
+    current_team = "POR"
+    participating_teams = SWAP_FAVORABILITY[3]
+    ownership = evaluate_swap(participating_teams, current_team)
+    return ownership
 
 
 def SAC_2030_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
     """
-    Sacramento has not traded their 2030 pick. They participate in swap rights with San Antonio.
-        -   SAC <-> SAS: this was the De'Aaron Fox trade.
-        -   SAC owns the most favorable swap rights with SAS.
+    Sacramento has not traded their 2030 pick. They keep it regardless of position.
     """
-    current_team = "SAC"
-    participating_teams = SWAP_FAVORABILITY[1]
-    ownership = evaluate_swap(participating_teams, current_team)
-    return ownership
+    pick = draft_order["SAC"]
+    return ("SAC", pick)
 
 
 def SAS_2030_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}):
