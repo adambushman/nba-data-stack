@@ -25,6 +25,30 @@ def generate_team_order() -> dict:
     return {team: i + 1 for i, team in enumerate(teams)}
 
 
+def generate_pick_history(team: str) -> dict:
+    """
+    Generates a mock pick history for a team, simulating the picks they have made in previous drafts. Goes back 5 years.
+
+    Parameters:
+    -----------
+        team (str): the abbreviated name of the team
+
+    Returns:
+    --------
+        (dict): a dictionary where keys are years and values are dictionaries of receiving team and pick values
+    """
+    teams = [
+        "ATL", "BOS", "BRK", "CHA", "CLE", "CHI", "DAL", "DEN",
+        "DET", "GSW", "HOU", "IND", "LAC", "LAL", "MEM", "MIA",
+        "MIL", "MIN", "NOP", "NYK", "OKC", "ORL", "PHI", "PHX",
+        "POR", "SAC", "SAS", "UTA", "TOR", "WAS"
+    ]
+    teams.remove(team)  # Remove the team for which we are generating history
+    random.shuffle(teams)  # Shuffle the teams to simulate randomness
+    recent_conveyences = teams[:random.randint(1, 3)]  # Get the first 5 teams as recent picks
+    return {f"{year}": {"": random.randint(1, 30)} for year in range(2020, 2026)}
+
+
 def prep_teams_and_picks(draft_order: dict, participating_teams: List[str]) -> dict:
     """
     Captures the team and pick value from the original draft order and prepping it in tuple format

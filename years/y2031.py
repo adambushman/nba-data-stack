@@ -2,6 +2,8 @@
 NBA Draft Year 2031
 This file contains functions to determine the ownership of the 2031 NBA Draft picks.
 Additionally, there exist constants for swap favorability.
+
+Last Confirmed : July 2025
 """
 
 
@@ -19,7 +21,7 @@ SWAP_FAVORABILITY = {
 }
 
 
-def ATL_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def ATL_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     Atlanta has not traded their 2031 pick. They keep it regardless of position.
     """
@@ -27,7 +29,7 @@ def ATL_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ("ATL", pick)
 
 
-def BOS_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def BOS_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     Boston has not traded their 2031 pick. They keep it regardless of position.
     """
@@ -35,7 +37,7 @@ def BOS_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ("BOS", pick)
 
 
-def BRK_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def BRK_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     Brooklyn has not traded their 2031 pick. They keep it regardless of position.
     """
@@ -43,7 +45,7 @@ def BRK_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ("BRK", pick)
 
 
-def CHA_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def CHA_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     Carlotte has not traded their 2031 pick. They keep it regardless of position.
     """
@@ -51,7 +53,7 @@ def CHA_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ("CHA", pick)
 
 
-def CHI_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def CHI_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     Chicago has not traded their 2031 pick. They keep it regardless of position.
     """
@@ -59,7 +61,7 @@ def CHI_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ("CHI", pick)
 
 
-def CLE_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def CLE_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     Cleveland has not traded their 2031 pick. They keep it regardless of position.
     """
@@ -67,7 +69,7 @@ def CLE_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ("CLE", pick)
 
 
-def DAL_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def DAL_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     Dallas has not traded their 2031 pick. They keep it regardless of position.
     """
@@ -75,7 +77,7 @@ def DAL_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ("DAL", pick)
 
 
-def DEN_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def DEN_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     Denver has not traded their 2031 pick. They keep it regardless of position.
     """
@@ -83,7 +85,7 @@ def DEN_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ("DEN", pick)
 
 
-def DET_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def DET_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     Detroit has not traded their 2031 pick. They keep it regardless of position.
     """
@@ -91,7 +93,7 @@ def DET_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ("DET", pick)
 
 
-def GSW_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def GSW_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     Golden State has not traded their 2031 pick. They keep it regardless of position.
     """
@@ -99,7 +101,7 @@ def GSW_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ("GSW", pick)
 
 
-def HOU_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def HOU_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     Houston has not traded their 2031 pick. They keep it regardless of position.
     """
@@ -107,7 +109,7 @@ def HOU_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ("HOU", pick)
 
 
-def IND_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def IND_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     Indiana has not traded their 2031 pick. They keep it regardless of position.
     """
@@ -115,7 +117,7 @@ def IND_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ("IND", pick)
 
 
-def LAC_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def LAC_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     LA Clippers has not traded their 2031 pick. They keep it regardless of position.
     """
@@ -123,7 +125,7 @@ def LAC_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ("LAC", pick)
 
 
-def LAL_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def LAL_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     LA Lakers has not traded their 2031 pick. They keep it regardless of position.
     """
@@ -131,7 +133,7 @@ def LAL_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ("LAL", pick)
 
 
-def MEM_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def MEM_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     Memphis has not traded their 2031 pick. They keep it regardless of position.
     """
@@ -139,7 +141,7 @@ def MEM_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ("MEM", pick)
 
 
-def MIA_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def MIA_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     Miami has not traded their 2031 pick. They keep it regardless of position.
     """
@@ -147,7 +149,7 @@ def MIA_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ("MIA", pick)
 
 
-def MIL_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def MIL_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     Milwaukee has not traded their 2031 pick. They keep it regardless of position.
     """
@@ -155,7 +157,7 @@ def MIL_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ("MIL", pick)
 
 
-def MIN_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def MIN_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     Minnesota traded their 2031 pick. Current owner is Sacramento.
         - Pick is unprotected.
@@ -166,7 +168,7 @@ def MIN_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ("SAC", pick)
 
 
-def NOP_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def NOP_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     New Orleans has not traded their 2031 pick. They keep it regardless of position.
     """
@@ -174,7 +176,7 @@ def NOP_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ("NOP", pick)
 
 
-def NYK_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def NYK_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     New York has traded their 2031 pick. Current owner is Brooklyn.
         - Pick is unprotected.
@@ -184,7 +186,7 @@ def NYK_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ("BRK", pick)
 
 
-def OKC_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def OKC_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     Oklahoma City has not traded their 2031 pick. They keep it regardless of position.
     """
@@ -192,7 +194,7 @@ def OKC_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ("OKC", pick)
 
 
-def ORL_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def ORL_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     Orlando has not traded their 2031 pick. They keep it regardless of position.
     """
@@ -200,7 +202,7 @@ def ORL_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ("ORL", pick)
 
 
-def PHI_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def PHI_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     Philadelphia has not traded their 2031 pick. They keep it regardless of position.
     """
@@ -208,7 +210,7 @@ def PHI_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ("PHI", pick)
 
 
-def PHX_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def PHX_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     Phoenix has traded their 2031 pick. Current owner is Utah.
         - Pick is unprotected.
@@ -218,7 +220,7 @@ def PHX_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ("UTA", pick)
 
 
-def POR_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def POR_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     Portland has not traded their 2031 pick. They keep it regardless of position.
     """
@@ -226,7 +228,7 @@ def POR_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ("POR", pick)
 
 
-def SAC_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def SAC_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     Sacramento has not traded their 2031 pick. They participate in swap rights with San Antonio.
         -   SAC <-> SAS: this was the De'Aaron Fox trade.
@@ -238,7 +240,7 @@ def SAC_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ownership
 
 
-def SAS_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def SAS_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     San Antonio has traded swap rights to their 2031 pick.
         -   SAS <-> SAC: this was the De'Aaron Fox trade.
@@ -250,7 +252,7 @@ def SAS_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ownership
 
 
-def TOR_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def TOR_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     Toronto has not traded their 2031 pick. They keep it regardless of position.
     """
@@ -258,7 +260,7 @@ def TOR_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ("TOR", pick)
 
 
-def UTA_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def UTA_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     Utah has not traded their 2031 pick. They keep it regardless of position.
     """
@@ -266,7 +268,7 @@ def UTA_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, cont
     return ("UTA", pick)
 
 
-def WAS_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}, context: Optional[dict] = {}) -> Tuple[str, int]:
+def WAS_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> Tuple[str, int]:
     """
     Washington has not traded their 2031 pick. They keep it regardless of position.
     """
