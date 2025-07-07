@@ -1,4 +1,4 @@
-from typing import List, Tuple
+from typing import Optional, Union, List, Tuple
 import random
 
 
@@ -25,7 +25,7 @@ def generate_team_order() -> dict:
     return {team: i + 1 for i, team in enumerate(teams)}
 
 
-def generate_pick_history(team: str) -> dict:
+def generate_pick_history(team: str, year_0: int) -> dict:
     """
     Generates a mock pick history for a team, simulating the picks they have made in previous drafts. Goes back 5 years.
 
@@ -45,8 +45,12 @@ def generate_pick_history(team: str) -> dict:
     ]
     teams.remove(team)  # Remove the team for which we are generating history
     random.shuffle(teams)  # Shuffle the teams to simulate randomness
-    recent_conveyences = teams[:random.randint(1, 3)]  # Get the first 5 teams as recent picks
-    return {f"{year}": {"": random.randint(1, 30)} for year in range(2020, 2026)}
+    recent_conveyences = teams[:random.randint(1, 5)]  # Get 1-4 teams who recently had picks conveyed to them
+    team_picks = [team] * (7 - len(recent_conveyences))  # Create a list of the team for each year
+    team_picks.extend(recent_conveyences)  # Add the recent conveyences to the list
+    random.shuffle(team_picks)  # Shuffle the picks to simulate randomness
+
+    return {f"{year}": {team_picks[year_0 - 7 - year]: random.randint(1, 30)} for year in range(year_0 - 7, year_0)}
 
 
 def prep_teams_and_picks(draft_order: dict, participating_teams: List[str]) -> dict:
@@ -114,3 +118,35 @@ def evaluate_swap(draft_order: dict, participating_teams: List[str], current_tea
         if obj[0] == current_team:
             # Return which team receives the pick
             return (participating_teams[i], obj[1])
+
+
+def evaluate_pick_history(draft_order: dict, pick_history: dict, current_team: str, owed_team: str, prior_years: Optional[Union[int, range]] = 7) -> Tuple[str, int]:
+    """
+    Evaluates the pick history for a team to determine if they own a pick or if it has been conveyed.
+
+    Parameters:
+    -----------
+        pick_history (dict): past 5 years of pick history for a team
+        current_team (str): the team whose pick is being evaluated
+        owed_team (str): the team that may receive the pick if it has been conveyed
+        prior_years (Optional[Union[int, range]]): the number of years to look back in the pick history to determine ownership; defaults to 7. Optionally, define with a range of years
+
+    Returns:
+    --------
+        (Tuple[str, int]): the abbreviated name of the team with final ownership of the pick and the pick value itself
+    """
+
+    pick = draft_order[current_team]  # Get the pick value for the current team
+
+    if isinstance(prior_years, range):
+        eligible_years = reversed(list(pick_history.keys())[prior_years.start - 1:prior_years.stop - 1])
+    else:
+        eligible_years = reversed(list(pick_history.keys())[:prior_years])
+
+    for year in eligible_years:
+        if owed_team in pick_history[year].keys():
+            # If the owed team is found in the pick history, team has conveyed the pick
+            return (current_team, pick)
+
+    # Team not found so team must now convey, if ensuing logic allows it
+    return (owed_team, pick)

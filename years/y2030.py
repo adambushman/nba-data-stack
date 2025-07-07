@@ -8,10 +8,9 @@ Last Confirmed : July 2025
 
 
 from years.utils  import (
-  prep_teams_and_picks
-  , evaluate_protection
+  evaluate_protection
   , evaluate_swap
-  , generate_team_order
+  , evaluate_pick_history
 )
 from typing import Optional
 
@@ -92,13 +91,22 @@ def DAL_2030_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}):
     return ownership
 
 
-
 def DEN_2030_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}):
     """
     Denver has not traded their 2030 pick. They keep it regardless of position.
     """
     pick = draft_order["DEN"]
-    return ("DEN", pick)
+    protected = range(1, 6)  # Protected 1-5, unprotected 6-30
+    ownership = evaluate_protection(draft_order, protected, "DEN", "OKC")
+
+    if ownership[0] == "DEN":
+        # Denver retains the pick (potentially again)
+        return ownership
+
+    # Pick is available to convey; must check if already satisfied
+    prior_years = range(2027, 2029) # Check 2027 and 2028
+    ownership = evaluate_pick_history(draft_order, prior_pick_history, "DEN", "OKC", prior_years)
+    return ownership
 
 
 def DET_2030_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}):

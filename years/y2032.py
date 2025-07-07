@@ -7,10 +7,10 @@ Last Confirmed : July 2025
 """
 
 
-from years.utils import (
-  prep_teams_and_picks
-  , evaluate_protection
+from years.utils  import (
+  evaluate_protection
   , evaluate_swap
+  , evaluate_pick_history
 )
 from typing import Optional
 
