@@ -5,11 +5,7 @@ from years.utils import (
   , evaluate_pick_history
   , generate_pick_history
 )
-import pytest
-import importlib
-import pkgutil
-import re
-from years import __path__ as years_path
+
 
 test_draft_order = {
     'DET': 1
