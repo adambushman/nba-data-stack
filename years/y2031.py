@@ -13,11 +13,12 @@ from years.utils  import (
   , evaluate_pick_history
 )
 from typing import Optional, Tuple
+import copy
 
 
 SWAP_FAVORABILITY = {
     # Ordered most to least favorable
-    "01": ["SAC", "SAS"]
+    1: {"participants": ["SAC", "SAS"], "owed_teams": ["SAC", "SAS"]},
 }
 
 
@@ -235,7 +236,7 @@ def SAC_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> T
         -   SAC owns the most favorable swap rights with SAS.
     """
     current_team = "SAC"
-    participating_teams = SWAP_FAVORABILITY["01"]
+    participating_teams = SWAP_FAVORABILITY[1]
     ownership = evaluate_swap(participating_teams, current_team)
     return ownership
 
@@ -247,7 +248,7 @@ def SAS_2031_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}) -> T
         -   SAS owns the least favorable swap rights with SAC.
     """
     current_team = "SAS"
-    participating_teams = SWAP_FAVORABILITY["01"]
+    participating_teams = SWAP_FAVORABILITY[1]
     ownership = evaluate_swap(participating_teams, current_team)
     return ownership
 

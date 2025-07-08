@@ -92,14 +92,14 @@ def test_evaluate_swap_basic_ordering():
     Test the evaluate_swap function to ensure it correctly evaluates swap rights based on draft order
     """
 
-    participating_1 = ["UTA", "NYK", "PHX"]
-    participating_2 = ["BRK", "MIN"]
-    participating_3 = ["DET", "PHX"]
+    participating_1 = {"participants": ["UTA", "NYK", "PHX"], "owed_teams": ["UTA", "UTA", "PHX"]}
+    participating_2 = {"participants": ["BRK", "MIN"], "owed_teams": ["BRK", "MIN"]}
+    participating_3 = {"participants": ["DET", "PHX"], "owed_teams": ["DET", "BRK"]}
 
     # Most favorable goes to UTA (5), then NYK (8), then PHX (12)
-    assert evaluate_swap(test_draft_order, participating_1, "UTA") == ("NYK", 6) # UTA's pick goes to NYK
+    assert evaluate_swap(test_draft_order, participating_1, "UTA") == ("UTA", 6) # UTA's pick goes to UTA
     assert evaluate_swap(test_draft_order, participating_2, "BRK") == ("MIN", 26) # BRK's pick goes to MIN
-    assert evaluate_swap(test_draft_order, participating_3, "PHX") == ("PHX", 30) # PHX keeps their own pick
+    assert evaluate_swap(test_draft_order, participating_3, "PHX") == ("BRK", 30) # PHX keeps their own pick
 
 
 def test_generate_pick_history():

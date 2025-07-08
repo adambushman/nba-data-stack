@@ -13,13 +13,14 @@ from years.utils  import (
   , evaluate_pick_history
 )
 from typing import Optional
+import copy
 
 
 SWAP_FAVORABILITY = {
     # Ordered most to least favorable
-    1: ["WAS", "MEM", "PHX"],
-    2: ["SAS", "DAL", "MIN"],
-    3: ["POR", "MIL"]
+    1: {"participants": ["WAS", "MEM", "PHX"], "owed_teams": ["WAS", "MEM", "PHX"]},
+    2: {"participants": ["SAS", "DAL", "MIN"], "owed_teams": ["SAS", "DAL", "MIN"]},
+    3: {"participants": ["POR", "MIL"], "owed_teams": ["POR", "MIL"]},
 }
 
 
@@ -80,7 +81,7 @@ def DAL_2030_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}):
     """
     protection = range(1, 2) # # Protected 1-1, unprotected 2-30
     min_pick_owner = evaluate_protection(draft_order, protection, "MIN", "SAS")
-    participating_teams = SWAP_FAVORABILITY[2]
+    participating_teams = copy.deepcopy(SWAP_FAVORABILITY[2])
 
     if min_pick_owner == "MIN":
         # MIN retains its pick
@@ -299,7 +300,7 @@ def SAS_2030_r1(draft_order: dict, prior_pick_history: Optional[dict] = {}):
     """
     protection = range(1, 2) # # Protected 1-1, unprotected 2-30
     min_pick_owner = evaluate_protection(draft_order, protection, "MIN", "SAS")
-    participating_teams = SWAP_FAVORABILITY[2]
+    participating_teams = copy.deepcopy(SWAP_FAVORABILITY[2])
 
     if min_pick_owner == "MIN":
         # MIN retains its pick

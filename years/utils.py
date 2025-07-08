@@ -96,20 +96,22 @@ def evaluate_protection(draft_order: dict, protected_range: range, protected_tea
         return (other_team, pick)
 
 
-def evaluate_swap(draft_order: dict, participating_teams: List[str], current_team: str) -> Tuple[str, int]:
+def evaluate_swap(draft_order: dict, swap_details: dict, current_team: str) -> Tuple[str, int]:
     """
     Evaluates whith team assumes ownership of a pick based on order of swaps and most/least favorable options
 
     Parameters:
     -----------
         draft_order (dict): the original order of the draft where keys are teams and items are pick values
-        participating_teams (List[str]): the teams participating in order of who receives most to least favorable picks
+        swap_details (dict): the teams participating and the teams owed in order of favorability (least to most)
         current_team (str): the team whose pick is being considered for the swap
 
     Returns:
     --------
         (Tuple[str, int]): the abbreviated name of the team with final ownership of the pick and the pick value itself
     """
+    participating_teams = swap_details["participants"]
+    owed_teams = swap_details["owed_teams"]
 
     filtered_picks = prep_teams_and_picks(draft_order, participating_teams) # Filter for the picks belong to participating teams
     sorted_by_position = sorted(filtered_picks.items(), key=lambda x: x[1]) # Sort by draft order
@@ -117,7 +119,7 @@ def evaluate_swap(draft_order: dict, participating_teams: List[str], current_tea
     for i, obj in enumerate(sorted_by_position):
         if obj[0] == current_team:
             # Return which team receives the pick
-            return (participating_teams[i], obj[1])
+            return (owed_teams[i], obj[1])
 
 
 def evaluate_pick_history(draft_order: dict, pick_history: dict, current_team: str, owed_team: str, prior_years: Optional[Union[int, range]] = 7) -> Tuple[str, int]:

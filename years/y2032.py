@@ -13,6 +13,7 @@ from years.utils  import (
   , evaluate_pick_history
 )
 from typing import Optional
+import copy
 
 
 SWAP_FAVORABILITY = {
